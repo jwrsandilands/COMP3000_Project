@@ -16,13 +16,13 @@ public class ControllerPickerTest : MonoBehaviour
         {
             player1 = Gamepad.current;
             p1 = true;
-            ball1.GetComponent<RollScript>().player = player1;
+            ball1.GetComponent<CarController>().player = player1;
         }
         else if (player2 == null && Gamepad.current != player1 && Gamepad.current.leftShoulder.ReadValue() == 1 && Gamepad.current.rightShoulder.ReadValue() == 1)
         {
             player2 = Gamepad.current;
             p2 = true;
-            ball2.GetComponent<RollScript>().player = player2;
+            ball2.GetComponent<CarController>().player = player2;
         }
     }
 }
