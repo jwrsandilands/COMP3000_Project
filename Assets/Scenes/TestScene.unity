@@ -1019,7 +1019,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1363377196}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -2432090755550338912, guid: a6f287b7b37e08a4bb5d0078104d4e75, type: 3}
 --- !u!4 &1363377200
 Transform:
   m_ObjectHideFlags: 0
@@ -1950,6 +1950,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5755934285075514914, guid: fba593e10ab23104da92d86a9bc07184, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2432090755550338912, guid: a6f287b7b37e08a4bb5d0078104d4e75, type: 3}
+    - target: {fileID: 5755934285075514915, guid: fba593e10ab23104da92d86a9bc07184, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9464bd9efecddf14c9cec1b02cb827cc, type: 2}
     - target: {fileID: 5755934285075514927, guid: fba593e10ab23104da92d86a9bc07184, type: 3}
       propertyPath: m_Name
       value: GameBall
