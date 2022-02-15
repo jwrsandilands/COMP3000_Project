@@ -14,8 +14,8 @@ public class CarController : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        rb.centerOfMass = com;
+        //rb = GetComponent<Rigidbody>();
+        //rb.centerOfMass = com;
     }
 
     public Gamepad player;
