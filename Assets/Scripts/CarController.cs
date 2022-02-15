@@ -8,14 +8,11 @@ public class CarController : MonoBehaviour
     public List<AxleInfo> axleInfos; // the information about each individual axle
     public float maxMotorTorque; // maximum torque the motor can apply to wheel
     public float maxSteeringAngle; // maximum steer angle the wheel can have
-    
-    public Vector3 com;
-    public Rigidbody rb;
+    public float BrakeTorque; // brakeforce to be applied when braking
 
     void Start()
     {
-        //rb = GetComponent<Rigidbody>();
-        //rb.centerOfMass = com;
+
     }
 
     public Gamepad player;
@@ -27,21 +24,37 @@ public class CarController : MonoBehaviour
             Vector2 steer = player.leftStick.ReadValue();
             float drive = player.rightTrigger.ReadValue();
             float reverse = player.leftTrigger.ReadValue();
+            float brake = player.aButton.ReadValue();
+            Debug.Log(brake);
 
             float motor = maxMotorTorque * (drive - reverse);
             float steering = maxSteeringAngle * steer.x;
+            float braking = BrakeTorque * brake;
 
             foreach (AxleInfo axleInfo in axleInfos)
             {
                 if (axleInfo.steering)
                 {
+                    //Steer with all wheels tied to the "Steering"
                     axleInfo.leftWheel.steerAngle = steering;
                     axleInfo.rightWheel.steerAngle = steering;
                 }
                 if (axleInfo.motor)
                 {
+                    //accelerate with all wheels tied to the "motor"
                     axleInfo.leftWheel.motorTorque = motor;
                     axleInfo.rightWheel.motorTorque = motor;
+
+                    //Braking and powersliding
+                    if (steering <= 0)
+                    {
+                        axleInfo.leftWheel.brakeTorque = braking;
+                    }
+                    if (steering >= 0)
+                    {
+                        axleInfo.rightWheel.brakeTorque = braking;
+                    }
+                    
                 }
             }
         }

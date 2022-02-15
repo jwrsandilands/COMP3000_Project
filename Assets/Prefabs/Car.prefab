@@ -89,7 +89,7 @@ Transform:
   m_GameObject: {fileID: 2033648192308281989}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.75, y: 0, z: -1.75}
-  m_LocalScale: {x: 4.49, y: 9, z: 9}
+  m_LocalScale: {x: 4.5, y: 8, z: 8}
   m_Children: []
   m_Father: {fileID: 8783942126599951820}
   m_RootOrder: 3
@@ -246,7 +246,7 @@ Transform:
   m_GameObject: {fileID: 3675078333665852568}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 9, y: 9, z: 9}
+  m_LocalScale: {x: 8, y: 8, z: 8}
   m_Children: []
   m_Father: {fileID: 8783942126599951820}
   m_RootOrder: 0
@@ -342,7 +342,7 @@ Transform:
   m_GameObject: {fileID: 5311126184494861074}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.75, y: 0, z: 1.75}
-  m_LocalScale: {x: 4.49, y: 9, z: 9}
+  m_LocalScale: {x: 4.5, y: 8, z: 8}
   m_Children: []
   m_Father: {fileID: 8783942126599951820}
   m_RootOrder: 2
@@ -438,7 +438,7 @@ Transform:
   m_GameObject: {fileID: 5903590494951209113}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.75, y: 0, z: -1.75}
-  m_LocalScale: {x: 4.49, y: 9, z: 9}
+  m_LocalScale: {x: 4.5, y: 8, z: 8}
   m_Children: []
   m_Father: {fileID: 8783942126599951820}
   m_RootOrder: 4
@@ -586,8 +586,7 @@ MonoBehaviour:
     steering: 0
   maxMotorTorque: 1600
   maxSteeringAngle: 35
-  com: {x: 0, y: 0, z: 0}
-  rb: {fileID: 3858037202234946157}
+  BrakeTorque: 6000
 --- !u!1 &7857716165715662390
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,7 +615,7 @@ Transform:
   m_GameObject: {fileID: 7857716165715662390}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.75, y: 0, z: 1.75}
-  m_LocalScale: {x: 4.49, y: 9, z: 9}
+  m_LocalScale: {x: 4.5, y: 8, z: 8}
   m_Children: []
   m_Father: {fileID: 8783942126599951820}
   m_RootOrder: 1
