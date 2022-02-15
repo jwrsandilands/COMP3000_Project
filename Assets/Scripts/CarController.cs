@@ -25,7 +25,6 @@ public class CarController : MonoBehaviour
             float drive = player.rightTrigger.ReadValue();
             float reverse = player.leftTrigger.ReadValue();
             float brake = player.aButton.ReadValue();
-            Debug.Log(brake);
 
             float motor = maxMotorTorque * (drive - reverse);
             float steering = maxSteeringAngle * steer.x;
