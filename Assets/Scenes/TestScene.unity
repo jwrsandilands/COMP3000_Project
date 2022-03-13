@@ -760,7 +760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1304349352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -860,7 +860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1320057246
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1841,6 +1841,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3323226f6d5a4bf4887c58a3dcc42da6, type: 2}
+    - target: {fileID: 3940908255814571470, guid: c0d284bf2e8faa741bbfbb42a3248eee, type: 3}
+      propertyPath: angleLimit
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 5546400014649637675, guid: c0d284bf2e8faa741bbfbb42a3248eee, type: 3}
       propertyPath: m_UseGravity
       value: 1
