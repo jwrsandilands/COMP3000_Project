@@ -67,27 +67,33 @@ public class CarController : MonoBehaviour
         this.transform.eulerAngles = new Vector3(angleClamp(this.transform.eulerAngles.x, angleLimit), this.transform.eulerAngles.y, angleClamp(this.transform.eulerAngles.z, angleLimit));
     }
 
+    //Method that ensures failsafe when clamping angles
     public float angleClamp(float angle, float clamp)
     {
+        //create the minimum and maximum clamp variables
         float min = -clamp;
         float max = clamp;
 
-        if (angle < 90 || angle > 270) // if angle in the critic region...
+        //if an angle is in a region that may cause error...
+        if (angle < 90 || angle > 270) 
         {
-            if (angle > 180) angle -= 360;  // convert all angles to -180..+180
+            //convert each angles to be within 0 to 360 with 180 as the mid-point.
+            if (angle > 180) angle -= 360;  
             if (max > 180) max -= 360;
             if (min > 180) min -= 360;
         }
 
+        //now use the inbuilt clamping function
         angle = Mathf.Clamp(angle, min, max);
 
+        //if the angle is negative, convert is to be within 0 to 360
         if (angle < 0)
         {
-            angle += 360;  // if angle negative, convert to 0..360
+            angle += 360;  
         }
 
         return angle;
-    }
+    } //ANGLECLAMP END
 }
 
 [System.Serializable]
