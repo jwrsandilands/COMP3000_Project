@@ -5,16 +5,15 @@ using UnityEngine;
 public class GoalScript : MonoBehaviour
 {
     //variables
-    //public Collider ball; //this is the ball collider
-
-    public BallSpawner ballSpawner; //this is the ball spawner
-    public GameObject[] ballSpawnerObjects;
-
+    public BallSpawner ballSpawner; //This is a potential ball spawner target
+    public GameObject[] ballSpawnerObjects; //The array of potential ball spawners
 
     public bool p1goal = false; //is p1 goal?
     public bool p2goal = false; //is p2 goal?
 
-    public float scoreAwarded; //amount of score this goal awards
+    public int scoreAwarded = 100; //amount of score this goal awards
+
+    public GameObject scoreCounter; //P1 or P2 scoring?
 
     //on game start
     private void Start()
@@ -36,17 +35,24 @@ public class GoalScript : MonoBehaviour
             if (p1goal && !p2goal)
             {
                 Debug.Log("Ball Entered P1 goal!"); //notify for tests
+
                 //award points
+                scoreCounter.GetComponent<Scorer>().scoreP2 += scoreAwarded;
             }
             else if (!p1goal && p2goal)
             {
                 Debug.Log("Ball Entered P2 goal!"); //notify for tests
+
                 //award points
+                scoreCounter.GetComponent<Scorer>().scoreP1 += scoreAwarded;
             }
             else if (p1goal && p2goal)
             {
                 Debug.Log("Ball Entered a Shared goal!"); //notify for tests
+
                 //award points
+                scoreCounter.GetComponent<Scorer>().scoreP2 += scoreAwarded;
+                scoreCounter.GetComponent<Scorer>().scoreP1 += scoreAwarded;
             }
             else
             {
