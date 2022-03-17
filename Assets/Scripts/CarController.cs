@@ -60,6 +60,11 @@ public class CarController : MonoBehaviour
                         axleInfo.rightWheel.brakeTorque = braking;
                     }
                     
+                    if (brake !<= 0)
+                    {
+                        axleInfo.leftWheel.brakeTorque = braking;
+                        axleInfo.rightWheel.brakeTorque = braking;
+                    }
                 }
             }
         }
