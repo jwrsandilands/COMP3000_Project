@@ -20,7 +20,7 @@ public class Bumper : MonoBehaviour
             //Vector3 dir = collision.transform.position - transform.position;
             //otherRB.AddForce(dir * bounceForce);
 
-            otherRB.AddExplosionForce(bounceForceCar, collision.contacts[0].point, 10);
+            otherRB.AddExplosionForce(bounceForceCar, collision.GetContact(0).point, 10);
         }
         else if(collision.transform.tag.Substring(0,4) == ballTag)
         {
@@ -30,8 +30,8 @@ public class Bumper : MonoBehaviour
 
             //Vector3 dir = collision.transform.position - transform.position;
             //otherRB.AddForce(dir * bounceForce);
-
-            otherRB.AddExplosionForce(bounceForceBall, collision.contacts[0].point, 10);
+            
+            otherRB.AddExplosionForce(bounceForceBall, collision.GetContact(0).point, 10);
         }
     }
 }
