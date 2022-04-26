@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PortalWall : MonoBehaviour
 {
-    public string playerTag;
+    public string playerTag = "Player";
 
 /*    private void OnCollisionEnter(Collision collision)
     {

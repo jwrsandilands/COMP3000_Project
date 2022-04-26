@@ -15,13 +15,13 @@ public class CarController : MonoBehaviour
 
     public float angleLimit = 15f; // variable to limit amout of tilt car can undergo
 
+    public int playerNumber; //get the number of this car's player
+    public Gamepad player; //set controller associated with this car.
+
     void Start()
     {
         CarRigidbody.centerOfMass = new Vector3(0.0f, massPos, 0.0f); // set center of mass
-        
     }
-
-    public Gamepad player;
 
     public void FixedUpdate()
     {

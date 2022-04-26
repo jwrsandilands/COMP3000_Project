@@ -37,6 +37,7 @@ public class BallSpawner : MonoBehaviour
         newBall.transform.rotation = ballSpawner.transform.rotation;
         newBall.GetComponent<Rigidbody>().velocity = Vector3.zero;
         newBall.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
+        newBall.GetComponent<BallScoreLogger>().p1p2 = 0;
         ballExist = true;
     }
 }
