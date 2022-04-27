@@ -47,7 +47,16 @@ MonoBehaviour:
   ball: {fileID: 5755934285075514927, guid: fba593e10ab23104da92d86a9bc07184, type: 3}
   newBall: {fileID: 0}
   ballSpawner: {fileID: 0}
-  ballExist: 0
+  ballExist: 1
+  common: {fileID: 2100000, guid: 9464bd9efecddf14c9cec1b02cb827cc, type: 2}
+  rare: {fileID: 2100000, guid: 18a1d111752178148b4d1e9067970cb0, type: 2}
+  ultra: {fileID: 2100000, guid: 474550b17090b394c89c69b41dc2295e, type: 2}
+  scoreValue: 0
+  cPoint: 100
+  rPoint: 200
+  uPoint: 400
+  rarity: 0
+  scoreTrigger: 0
 --- !u!1001 &5993370806788721790
 PrefabInstance:
   m_ObjectHideFlags: 0

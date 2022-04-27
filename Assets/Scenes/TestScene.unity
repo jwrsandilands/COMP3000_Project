@@ -869,6 +869,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7415087236614946058, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
   m_PrefabInstance: {fileID: 1115633416}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &504871929 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7415087236614946057, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+  m_PrefabInstance: {fileID: 1115633416}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504871927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cdf598051dbec44488707491ce152a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &697683897
 GameObject:
   m_ObjectHideFlags: 0
@@ -1661,6 +1672,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 177170679}
     m_Modifications:
+    - target: {fileID: 7415087236614946057, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+      propertyPath: CommonBall
+      value: 
+      objectReference: {fileID: 5755934285075514927, guid: fba593e10ab23104da92d86a9bc07184, type: 3}
     - target: {fileID: 7415087236614946058, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2133,10 +2148,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 300
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2438,6 +2453,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 337285631e2e25b4cbad971880f65e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cb: 0
+  mb: 0
+  mr: 0
+  gb: 0
+  gw: 0
+  cbs: 0
+  mbs: 0
+  gbs: 0
+  sr: 0
+  bn: 0
+  ballSpawners:
+  - {fileID: 750290286}
+  - {fileID: 504871929}
 --- !u!4 &1369793056
 Transform:
   m_ObjectHideFlags: 0
@@ -4495,6 +4523,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 177170679}
     m_Modifications:
+    - target: {fileID: 7415087236614946057, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+      propertyPath: CommonBall
+      value: 
+      objectReference: {fileID: 5755934285075514927, guid: fba593e10ab23104da92d86a9bc07184, type: 3}
     - target: {fileID: 7415087236614946058, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
       propertyPath: m_RootOrder
       value: 0
