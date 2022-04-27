@@ -179,6 +179,8 @@ public class SettingsController : MonoBehaviour
         Debug.Log(PlayerPrefs.GetInt("sr"));
         Debug.Log(PlayerPrefs.GetInt("bn"));
 
+        Debug.Log("----Moving Scene!----");
+
         SceneManager.LoadScene("TestScene");
     }
 }
