@@ -25,10 +25,12 @@ public class SettingsController : MonoBehaviour
     //goal obstacles
     public bool goalBumper; //set bumper Y/N
     public float goalStrength = 1; //set bumper x1/x2/x3
+    public bool goalOwned = true; //set goal ownership Y/N
     public bool goalWarp; //set goal warp Y/N
     //buttons and sliders
     public Button goalBumperBtn; //bumper toggle
     public Slider goalBumperSldr; //bumper strength
+    public Button goalOwnedBtn; //owner toggle
     public Button goalWarpBtn; //warp toggle
 
     //ball score chance
@@ -70,6 +72,10 @@ public class SettingsController : MonoBehaviour
         //Goal bumper strength?
         Slider gbSldr = goalBumperSldr.GetComponent<Slider>();
         gbSldr.onValueChanged.AddListener(delegate { GoalSliderValue(gbSldr); });
+
+        //Goal owned?
+        Button goBtn = goalOwnedBtn.GetComponent<Button>();
+        goBtn.onClick.AddListener(GoalOwnerToggle);
 
         //Goal Warp?
         Button gwBtn = goalWarpBtn.GetComponent<Button>();
@@ -123,6 +129,11 @@ public class SettingsController : MonoBehaviour
         goalStrength = gbSldr.value;
     }
 
+    void GoalOwnerToggle()
+    {
+        goalOwned = !goalOwned;
+    }
+
     void GoalWarpToggle()
     {
         goalWarp = !goalWarp;
@@ -158,6 +169,7 @@ public class SettingsController : MonoBehaviour
 
         PlayerPrefs.SetInt("gb", goalBumper ? 1 : 0);
         PlayerPrefs.SetInt("gbs", (int)goalStrength);
+        PlayerPrefs.SetInt("go", goalOwned ? 1 : 0);
         PlayerPrefs.SetInt("gw", goalWarp ? 1 : 0);
 
         PlayerPrefs.SetInt("sr", specialRarity);
@@ -174,6 +186,7 @@ public class SettingsController : MonoBehaviour
 
         Debug.Log(PlayerPrefs.GetInt("gb") == 1 ? true : false);
         Debug.Log(PlayerPrefs.GetInt("gbs"));
+        Debug.Log(PlayerPrefs.GetInt("go") == 1 ? true : false);
         Debug.Log(PlayerPrefs.GetInt("gw") == 1 ? true : false);
 
         Debug.Log(PlayerPrefs.GetInt("sr"));

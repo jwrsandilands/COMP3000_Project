@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SettingsRetriever : MonoBehaviour
 {
-    public bool cb, mb, mr, gb, gw; //corner bumper, mid bumper, mid ramps, goal bumper, goal warps
+    public bool cb, mb, mr, gb, go, gw; //corner bumper, mid bumper, mid ramps, goal bumper, goal owners, goal warps
     public int cbs, mbs, gbs, sr, bn; //corner bumper strength, mid bumper strength, goal bumper strength, special rarity, ball number
     public BallSpawner[] ballSpawners;
     int nSpawners;
@@ -14,7 +14,6 @@ public class SettingsRetriever : MonoBehaviour
     int rCounter, raresExists;
     int uCounter, ultrasExists;
     bool[] previouslyExists;
-    bool scoreTrigger = false; //triggers for a moment when ball is scored
 
 
     // Start is called before the first frame update
@@ -33,7 +32,9 @@ public class SettingsRetriever : MonoBehaviour
 
         Debug.Log(PlayerPrefs.GetInt("gb") == 1 ? true : false);
         Debug.Log(PlayerPrefs.GetInt("gbs"));
+        Debug.Log(PlayerPrefs.GetInt("go") == 1 ? true : false);
         Debug.Log(PlayerPrefs.GetInt("gw") == 1 ? true : false);
+
 
         Debug.Log(PlayerPrefs.GetInt("sr"));
         Debug.Log(PlayerPrefs.GetInt("bn"));
@@ -98,7 +99,6 @@ public class SettingsRetriever : MonoBehaviour
                             }
                         }
                     }
-
                 }
             }
         }
@@ -110,7 +110,25 @@ public class SettingsRetriever : MonoBehaviour
                 if (previouslyExists[n] != ballSpawners[n].ballExist)
                 {
                     Debug.Log("Rare Ball Scored");
+
                     ballSpawners[n].rarity = 0;
+
+                    if (commonsExists == nSpawners)
+                    {
+                        int rchance = Random.Range(0, 6);
+                        int uchance = Random.Range(0, 12);
+                        if (rchance < sr)
+                        {
+                            if (uchance < sr)
+                            {
+                                ballSpawners[n].rarity = 2;
+                            }
+                            else
+                            {
+                                ballSpawners[n].rarity = 1;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -122,7 +140,25 @@ public class SettingsRetriever : MonoBehaviour
                 if (previouslyExists[n] != ballSpawners[n].ballExist)
                 {
                     Debug.Log("Ultra Ball Scored");
+
                     ballSpawners[n].rarity = 0;
+
+                    if (commonsExists == nSpawners)
+                    {
+                        int rchance = Random.Range(0, 8);
+                        int uchance = Random.Range(0, 16);
+                        if (rchance < sr)
+                        {
+                            if (uchance < sr)
+                            {
+                                ballSpawners[n].rarity = 2;
+                            }
+                            else
+                            {
+                                ballSpawners[n].rarity = 1;
+                            }
+                        }
+                    }
                 }
             }
         }

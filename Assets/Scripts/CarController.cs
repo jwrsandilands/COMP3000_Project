@@ -13,7 +13,7 @@ public class CarController : MonoBehaviour
     public Rigidbody CarRigidbody; // get rigid body of car
     public float massPos = -0.3f; // y position of local center of mass
 
-    public float angleLimit = 15f; // variable to limit amout of tilt car can undergo
+    public float angleLimit = 15f; // variable to limit amount of tilt car can undergo
 
     public int playerNumber; //get the number of this car's player
     public Gamepad player; //set controller associated with this car.
