@@ -7,7 +7,6 @@ public class SettingsRetriever : MonoBehaviour
     public bool cb, mb, mr, gb, go, gw; //corner bumper, mid bumper, mid ramps, goal bumper, goal owners, goal warps
     public int cbs, mbs, gbs, sr, bn; //corner bumper strength, mid bumper strength, goal bumper strength, special rarity, ball number
     public BallSpawner[] ballSpawners;
-    int nSpawners;
 
     int n;
     int cCounter, commonsExists;
@@ -19,8 +18,7 @@ public class SettingsRetriever : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nSpawners = ballSpawners.Length;
-        previouslyExists = new bool[nSpawners];
+
 
         //test log
         Debug.Log(PlayerPrefs.GetInt("cb") == 1 ? true : false);
@@ -54,12 +52,99 @@ public class SettingsRetriever : MonoBehaviour
             sr = PlayerPrefs.GetInt("sr");
             bn = PlayerPrefs.GetInt("bn");
         }
+
+        //set up array variables
+        previouslyExists = new bool[bn];
+
+        //set if a spawner is active using predefined patterns
+        switch (bn - 1)
+        {
+            case 0:
+                ballSpawners[0].IsActive = true; //placeholder for mid
+                break;
+            case 1:
+                ballSpawners[0].IsActive = true;
+                ballSpawners[1].IsActive = true;
+                break;
+            case 2:
+                ballSpawners[0].IsActive = true;
+                ballSpawners[1].IsActive = true;
+                ballSpawners[2].IsActive = true; //placeholder for mid
+                break;
+            case 3:
+                ballSpawners[2].IsActive = true;
+                ballSpawners[3].IsActive = true;
+                ballSpawners[4].IsActive = true;
+                ballSpawners[5].IsActive = true;
+                break;
+            case 4:
+                ballSpawners[0].IsActive = true; //placeholder for mid
+                ballSpawners[2].IsActive = true;
+                ballSpawners[3].IsActive = true;
+                ballSpawners[4].IsActive = true;
+                ballSpawners[5].IsActive = true;
+                break;
+            case 5:
+                ballSpawners[0].IsActive = true;
+                ballSpawners[1].IsActive = true;
+                ballSpawners[6].IsActive = true;
+                ballSpawners[7].IsActive = true;
+                ballSpawners[8].IsActive = true;
+                ballSpawners[9].IsActive = true;
+                break;
+            case 6:
+                ballSpawners[0].IsActive = true;
+                ballSpawners[1].IsActive = true;
+                ballSpawners[2].IsActive = true; //placeholder for mid
+                ballSpawners[6].IsActive = true;
+                ballSpawners[7].IsActive = true;
+                ballSpawners[8].IsActive = true;
+                ballSpawners[9].IsActive = true;
+                break;
+            case 7:
+                ballSpawners[2].IsActive = true;
+                ballSpawners[3].IsActive = true;
+                ballSpawners[4].IsActive = true;
+                ballSpawners[5].IsActive = true;
+                ballSpawners[6].IsActive = true;
+                ballSpawners[7].IsActive = true;
+                ballSpawners[8].IsActive = true;
+                ballSpawners[9].IsActive = true;
+                break;
+            case 8:
+                ballSpawners[0].IsActive = true; //placeholder for mid
+                ballSpawners[2].IsActive = true;
+                ballSpawners[3].IsActive = true;
+                ballSpawners[4].IsActive = true;
+                ballSpawners[5].IsActive = true;
+                ballSpawners[6].IsActive = true;
+                ballSpawners[7].IsActive = true;
+                ballSpawners[8].IsActive = true;
+                ballSpawners[9].IsActive = true;
+                break;
+            case 9:
+                ballSpawners[0].IsActive = true;
+                ballSpawners[1].IsActive = true;
+                ballSpawners[2].IsActive = true;
+                ballSpawners[3].IsActive = true;
+                ballSpawners[4].IsActive = true;
+                ballSpawners[5].IsActive = true;
+                ballSpawners[6].IsActive = true;
+                ballSpawners[7].IsActive = true;
+                ballSpawners[8].IsActive = true;
+                ballSpawners[9].IsActive = true;
+                break;
+        }
+
+
+
     }
 
     private void Update()
     {
+        //use the update as a while loop to monitor ball numbers
         n++;
-        if (n >= nSpawners) 
+        if (n >= bn) 
         { 
             n = 0;
 
@@ -74,16 +159,21 @@ public class SettingsRetriever : MonoBehaviour
             uCounter = 0;
         }
 
+        //if common ball
         if(ballSpawners[n].rarity == 0)
         {
+            //increase common counter
             cCounter++;
+            //check if ball is missing
             if (!ballSpawners[n].ballExist)
             {
+                //if ball was just scored
                 if(previouslyExists[n] != ballSpawners[n].ballExist)
                 {
                     Debug.Log("Common Ball Scored");
 
-                    if (commonsExists > nSpawners / 2)
+                    //create a random chance for a rare and Ultrarare ball
+                    if (commonsExists > bn / 1.2f)
                     {
                         int rchance = Random.Range(0, 4);
                         int uchance = Random.Range(0, 8);
@@ -113,7 +203,7 @@ public class SettingsRetriever : MonoBehaviour
 
                     ballSpawners[n].rarity = 0;
 
-                    if (commonsExists == nSpawners)
+                    if (commonsExists == bn - 2)
                     {
                         int rchance = Random.Range(0, 6);
                         int uchance = Random.Range(0, 12);
@@ -143,7 +233,7 @@ public class SettingsRetriever : MonoBehaviour
 
                     ballSpawners[n].rarity = 0;
 
-                    if (commonsExists == nSpawners)
+                    if (commonsExists == bn - 1)
                     {
                         int rchance = Random.Range(0, 8);
                         int uchance = Random.Range(0, 16);

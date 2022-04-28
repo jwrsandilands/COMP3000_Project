@@ -10,33 +10,67 @@ public class BallSpawner : MonoBehaviour
     public GameObject ballSpawner; //ballSpawner
     public bool ballExist = true; //ball does exists by default
 
+    private bool isActive = false;
+
     public Material common, rare, ultra;
     public int scoreValue;
     public int cPoint, rPoint, uPoint;
     public int rarity = 0; //0 = common, 1 = rare, 2 = Ultra rare
 
-    bool isDelay = false; //is the timer currently delaying the spawn?
-    
+    bool isDelay = false; //is the timer currently delaying the spawn?    
 
     // Run code once when the game starts
-    void Start()
+/*    void Start()
     {
-        //create the ball
-        newBall = Instantiate(ball);
+        if (isActive)
+        {
+            //create the ball
+            newBall = Instantiate(ball);
 
-        //set rarity
-        newBall.GetComponent<Renderer>().material = common;
-        scoreValue = cPoint;
+            //set rarity
+            newBall.GetComponent<Renderer>().material = common;
+            scoreValue = cPoint;
 
-        //link spawner to ball
-        string ballTag = this.name.ToString();
-        ballTag = ballTag.Substring(ballTag.Length - 1);
-        newBall.tag = "ball " + ballTag;
-        ballSpawner = this.gameObject;
+            //link spawner to ball
+            string ballTag = this.name.ToString();
+            ballTag = ballTag.Substring(ballTag.Length - 1);
+            newBall.tag = "ball " + ballTag;
+            ballSpawner = this.gameObject;
 
-        //set position of the ball
-        newBall.transform.position = ballSpawner.transform.position;
-        newBall.transform.rotation = ballSpawner.transform.rotation;
+            //set position of the ball
+            newBall.transform.position = ballSpawner.transform.position;
+            newBall.transform.rotation = ballSpawner.transform.rotation;
+        }
+    }*/
+
+    public bool IsActive
+    {
+        get { return isActive; }
+        set
+        {
+            if (value == isActive) return;
+
+            isActive = value;
+            if (isActive)
+            {
+                //create the ball
+                newBall = Instantiate(ball);
+
+                //set rarity
+                newBall.GetComponent<Renderer>().material = common;
+                scoreValue = cPoint;
+
+                //link spawner to ball
+                string ballTag = this.name.ToString();
+                ballTag = ballTag.Substring(ballTag.Length - 1);
+                newBall.tag = "ball " + ballTag;
+                ballSpawner = this.gameObject;
+
+                //set position of the ball
+                newBall.transform.position = ballSpawner.transform.position;
+                newBall.transform.rotation = ballSpawner.transform.rotation;
+            }
+        }
     }
 
     // Update is called once per frame
