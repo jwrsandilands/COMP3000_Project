@@ -535,6 +535,7 @@ Transform:
   - {fileID: 468204357}
   - {fileID: 989924918}
   - {fileID: 1433518465}
+  - {fileID: 254712223}
   m_Father: {fileID: 271870239}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -635,6 +636,88 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 177984300}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &254712222
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 177170679}
+    m_Modifications:
+    - target: {fileID: 7415087236614946057, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+      propertyPath: CommonBall
+      value: 
+      objectReference: {fileID: 5755934285075514927, guid: fba593e10ab23104da92d86a9bc07184, type: 3}
+    - target: {fileID: 7415087236614946058, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415087236614946058, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415087236614946058, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415087236614946058, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415087236614946058, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415087236614946058, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415087236614946058, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415087236614946058, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415087236614946058, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415087236614946058, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415087236614946058, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415087236614946059, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+      propertyPath: m_Name
+      value: BallSpawner 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+--- !u!4 &254712223 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7415087236614946058, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+  m_PrefabInstance: {fileID: 254712222}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &254712224 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7415087236614946059, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+  m_PrefabInstance: {fileID: 254712222}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &254712225 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7415087236614946057, guid: 2d00d7d1b5fc34f4e8624118f85d3d83, type: 3}
+  m_PrefabInstance: {fileID: 254712222}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254712224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cdf598051dbec44488707491ce152a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &271870238
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,6 +987,7 @@ MonoBehaviour:
   - {fileID: 468204356}
   - {fileID: 989924917}
   - {fileID: 1433518464}
+  - {fileID: 254712224}
   p1goal: 1
   p2goal: 0
   scoreAwarded: 100
@@ -945,6 +1029,7 @@ MonoBehaviour:
   - {fileID: 468204356}
   - {fileID: 989924917}
   - {fileID: 1433518464}
+  - {fileID: 254712224}
   scoreAwarded: 100
   scoreCounter: {fileID: 121217408}
 --- !u!1 &457303943 stripped
@@ -2827,6 +2912,7 @@ MonoBehaviour:
   - {fileID: 468204358}
   - {fileID: 989924919}
   - {fileID: 1433518466}
+  - {fileID: 254712225}
 --- !u!4 &1369793056
 Transform:
   m_ObjectHideFlags: 0
@@ -4182,6 +4268,7 @@ MonoBehaviour:
   - {fileID: 468204356}
   - {fileID: 989924917}
   - {fileID: 1433518464}
+  - {fileID: 254712224}
   p1goal: 0
   p2goal: 1
   scoreAwarded: 100
@@ -4223,6 +4310,7 @@ MonoBehaviour:
   - {fileID: 468204356}
   - {fileID: 989924917}
   - {fileID: 1433518464}
+  - {fileID: 254712224}
   scoreAwarded: 100
   scoreCounter: {fileID: 121217408}
 --- !u!1001 &1971073788

@@ -62,7 +62,7 @@ public class BallSpawner : MonoBehaviour
 
                 //link spawner to ball
                 string ballTag = this.name.ToString();
-                ballTag = ballTag.Substring(ballTag.Length - 1);
+                ballTag = ballTag.Split(' ')[1];
                 newBall.tag = "ball " + ballTag;
                 ballSpawner = this.gameObject;
 

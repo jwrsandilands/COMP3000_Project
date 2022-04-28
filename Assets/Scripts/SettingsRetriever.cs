@@ -57,10 +57,12 @@ public class SettingsRetriever : MonoBehaviour
         previouslyExists = new bool[bn];
 
         //set if a spawner is active using predefined patterns
+        //0 top mid, 1 bottom mid, 2  upper left, 3 lower left, 4 upper right, 5 lower right
+        //6 top left, 7 bottom left, 8 top right, 9 bottom right, 10 mid mid
         switch (bn - 1)
         {
             case 0:
-                ballSpawners[0].IsActive = true; //placeholder for mid
+                ballSpawners[10].IsActive = true;
                 break;
             case 1:
                 ballSpawners[0].IsActive = true;
@@ -69,7 +71,7 @@ public class SettingsRetriever : MonoBehaviour
             case 2:
                 ballSpawners[0].IsActive = true;
                 ballSpawners[1].IsActive = true;
-                ballSpawners[2].IsActive = true; //placeholder for mid
+                ballSpawners[10].IsActive = true;
                 break;
             case 3:
                 ballSpawners[2].IsActive = true;
@@ -78,7 +80,7 @@ public class SettingsRetriever : MonoBehaviour
                 ballSpawners[5].IsActive = true;
                 break;
             case 4:
-                ballSpawners[0].IsActive = true; //placeholder for mid
+                ballSpawners[10].IsActive = true; 
                 ballSpawners[2].IsActive = true;
                 ballSpawners[3].IsActive = true;
                 ballSpawners[4].IsActive = true;
@@ -95,7 +97,7 @@ public class SettingsRetriever : MonoBehaviour
             case 6:
                 ballSpawners[0].IsActive = true;
                 ballSpawners[1].IsActive = true;
-                ballSpawners[2].IsActive = true; //placeholder for mid
+                ballSpawners[10].IsActive = true; 
                 ballSpawners[6].IsActive = true;
                 ballSpawners[7].IsActive = true;
                 ballSpawners[8].IsActive = true;
@@ -112,7 +114,7 @@ public class SettingsRetriever : MonoBehaviour
                 ballSpawners[9].IsActive = true;
                 break;
             case 8:
-                ballSpawners[0].IsActive = true; //placeholder for mid
+                ballSpawners[10].IsActive = true; 
                 ballSpawners[2].IsActive = true;
                 ballSpawners[3].IsActive = true;
                 ballSpawners[4].IsActive = true;
