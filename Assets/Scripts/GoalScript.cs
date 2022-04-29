@@ -15,12 +15,6 @@ public class GoalScript : MonoBehaviour
 
     public GameObject scoreCounter; //P1 or P2 scoring?
 
-    //on game start
-    private void Start()
-    {
-        
-    }
-
     //when something enters the trigger
     private void OnTriggerEnter(Collider other)
     {
@@ -30,6 +24,7 @@ public class GoalScript : MonoBehaviour
             int n = int.Parse(other.tag.Substring(5));
             ballSpawner = ballSpawnerObjects[n].GetComponent<BallSpawner>();
             ballSpawner.ballExist = false;
+            scoreAwarded = ballSpawner.scoreValue;
 
             //check who to give points
             if (p1goal && !p2goal)

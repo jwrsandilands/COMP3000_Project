@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class SettingsRetriever : MonoBehaviour
 {
-    public bool cb, mb, mr, gb, go, gw; //corner bumper, mid bumper, mid ramps, goal bumper, goal owners, goal warps
-    public int cbs, mbs, gbs, sr, bn; //corner bumper strength, mid bumper strength, goal bumper strength, special rarity, ball number
+    private bool cb, mb, mr, gb, go, gw; //corner bumper, mid bumper, mid ramps, goal bumper, goal owners, goal warps
+    private int cbs, mbs, gbs, sr, bn; //corner bumper strength, mid bumper strength, goal bumper strength, special rarity, ball number
     public BallSpawner[] ballSpawners;
+    public GameObject[] bumpers;
+    public GameObject[] ramps;
+    public GameObject[] goals;
 
     int n;
     int cCounter, commonsExists;
@@ -18,8 +21,6 @@ public class SettingsRetriever : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
-
         //test log
         Debug.Log(PlayerPrefs.GetInt("cb") == 1 ? true : false);
         Debug.Log(PlayerPrefs.GetInt("cbs"));
@@ -40,17 +41,32 @@ public class SettingsRetriever : MonoBehaviour
         if(PlayerPrefs.HasKey("cb"))
         {
             //load variables from the PlayerPrefs
-            cb = PlayerPrefs.GetInt("cb") == 1 ? true : false;
-            mb = PlayerPrefs.GetInt("mb") == 1 ? true : false;
-            mr = PlayerPrefs.GetInt("mr") == 1 ? true : false;
-            gb = PlayerPrefs.GetInt("gb") == 1 ? true : false;
-            gw = PlayerPrefs.GetInt("gw") == 1 ? true : false;
-            
-            cbs = PlayerPrefs.GetInt("cbs");
-            mbs = PlayerPrefs.GetInt("mbs");
-            gbs = PlayerPrefs.GetInt("gbs");
-            sr = PlayerPrefs.GetInt("sr");
-            bn = PlayerPrefs.GetInt("bn");
+            cb = PlayerPrefs.GetInt("cb") == 1 ? true : false; //
+            mb = PlayerPrefs.GetInt("mb") == 1 ? true : false; //
+            mr = PlayerPrefs.GetInt("mr") == 1 ? true : false; //
+            gb = PlayerPrefs.GetInt("gb") == 1 ? true : false; //
+            go = PlayerPrefs.GetInt("go") == 1 ? true : false;
+            gw = PlayerPrefs.GetInt("gw") == 1 ? true : false; //
+
+            cbs = PlayerPrefs.GetInt("cbs"); //
+            mbs = PlayerPrefs.GetInt("mbs"); //
+            gbs = PlayerPrefs.GetInt("gbs"); //
+            sr = PlayerPrefs.GetInt("sr"); //
+            bn = PlayerPrefs.GetInt("bn"); //
+        }
+        else
+        {
+            //use preset defaults
+            cb = true;
+            mb = false;
+            mr = false;
+            gb = true;
+            go = false;
+            gw = false;
+            cbs = 1;
+            mbs = 1;
+            sr = 1;
+            bn = 4;
         }
 
         //set up array variables
@@ -138,7 +154,95 @@ public class SettingsRetriever : MonoBehaviour
                 break;
         }
 
+        //set if bumpers are on or not
+        //0 top left, 1 bottom left, 2 top right, 3 bottom right, 4 left goal, 5 right goal
+        //6 left warp, 7 right warp, 8 left wall, 9 right wall, 10 is Mid upper, 11 mid lower
+        //12 mid left, 13 mid right
+        if (cb) //corner bumpers? 
+        {
+            //set corner bumpers as active
+            bumpers[0].SetActive(true);
+            bumpers[1].SetActive(true);
+            bumpers[2].SetActive(true);
+            bumpers[3].SetActive(true);
 
+            //set corner bumper strengths
+            bumpers[0].GetComponent<Bumper>().bounceForceBall *= cbs;
+            bumpers[0].GetComponent<Bumper>().bounceForceCar *= cbs;
+            bumpers[1].GetComponent<Bumper>().bounceForceBall *= cbs;
+            bumpers[1].GetComponent<Bumper>().bounceForceCar *= cbs;
+            bumpers[2].GetComponent<Bumper>().bounceForceBall *= cbs;
+            bumpers[2].GetComponent<Bumper>().bounceForceCar *= cbs;
+            bumpers[3].GetComponent<Bumper>().bounceForceBall *= cbs;
+            bumpers[3].GetComponent<Bumper>().bounceForceCar *= cbs;
+        }
+
+        if (mb) //mid bumers?
+        {
+            //set mid bumpers as active
+            bumpers[10].SetActive(true);
+            bumpers[11].SetActive(true);
+            bumpers[12].SetActive(true);
+            bumpers[13].SetActive(true);
+        }
+
+        
+        if (gb) //goal bumpers?
+        {
+            //set goal bumpers as active
+            bumpers[4].SetActive(true);
+            bumpers[5].SetActive(true);
+
+            //set goal bumper strengths (not for balls they cant collide with these)
+            bumpers[4].GetComponent<Bumper>().bounceForceCar *= gbs;
+            bumpers[5].GetComponent<Bumper>().bounceForceCar *= gbs;
+        }
+        else if(gw) //goal warps?
+        {
+            //set goal warps as active
+            bumpers[6].SetActive(true); //bumpers 6 and 7 are actually warper objects
+            bumpers[7].SetActive(true);
+            bumpers[8].SetActive(false); //bumpers 8 and 9 are actually collision objects that need to be disabled
+            bumpers[9].SetActive(false);
+
+            //set mid bumper strengths
+            bumpers[10].GetComponent<Bumper>().bounceForceBall *= mbs;
+            bumpers[10].GetComponent<Bumper>().bounceForceCar *= mbs;
+            bumpers[11].GetComponent<Bumper>().bounceForceBall *= mbs;
+            bumpers[11].GetComponent<Bumper>().bounceForceCar *= mbs;
+            bumpers[12].GetComponent<Bumper>().bounceForceBall *= mbs;
+            bumpers[12].GetComponent<Bumper>().bounceForceCar *= mbs;
+            bumpers[13].GetComponent<Bumper>().bounceForceBall *= mbs;
+            bumpers[13].GetComponent<Bumper>().bounceForceCar *= mbs;
+        }
+
+        //set ramps
+        if (mr) //mid ramps?
+        {
+            //set mid ramps as active
+            ramps[0].SetActive(true);
+            ramps[1].SetActive(true);
+        }
+
+        //set goals owned
+        if (go)
+        {
+            //set owned goals as the active goals
+            goals[0].SetActive(true);
+            goals[1].SetActive(true);
+
+            goals[2].SetActive(false);
+            goals[3].SetActive(false);
+        }
+        else
+        {
+            //set unowned goals as the active goals
+            goals[2].SetActive(true);
+            goals[3].SetActive(true);
+
+            goals[0].SetActive(false);
+            goals[1].SetActive(false);
+        }
 
     }
 

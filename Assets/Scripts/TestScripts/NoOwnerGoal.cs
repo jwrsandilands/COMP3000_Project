@@ -21,6 +21,7 @@ public class NoOwnerGoal : MonoBehaviour
             int n = int.Parse(other.tag.Substring(5));
             ballSpawner = ballSpawnerObjects[n].GetComponent<BallSpawner>();
             ballSpawner.ballExist = false;
+            scoreAwarded = ballSpawner.scoreValue;
 
             //check who to give points
             if (other.GetComponent<BallScoreLogger>().p1p2 == 1)

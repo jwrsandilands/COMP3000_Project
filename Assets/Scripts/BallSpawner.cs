@@ -56,8 +56,10 @@ public class BallSpawner : MonoBehaviour
                 //create the ball
                 newBall = Instantiate(ball);
 
-                //set rarity
+                //set common rarity values to start game
                 newBall.GetComponent<Renderer>().material = common;
+                newBall.transform.localScale = new Vector3(4, 4, 4);
+                newBall.GetComponent<Rigidbody>().mass = 0.5f;
                 scoreValue = cPoint;
 
                 //link spawner to ball
@@ -83,6 +85,8 @@ public class BallSpawner : MonoBehaviour
             if(isDelay == false)
             {
                 isDelay = true;
+
+                newBall.SetActive(false); //make ball disappear
                 StartCoroutine(TimeDelay()); //spawn ball after a delay
             }
         }
@@ -91,26 +95,38 @@ public class BallSpawner : MonoBehaviour
     //spawn the ball script
     void repositionBall()
     {
+        //reposition ball
+        newBall.SetActive(true); //make ball reappear
         newBall.transform.position = ballSpawner.transform.position;
         newBall.transform.rotation = ballSpawner.transform.rotation;
         newBall.GetComponent<Rigidbody>().velocity = Vector3.zero;
         newBall.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-        newBall.GetComponent<BallScoreLogger>().p1p2 = 0;
+
+        newBall.GetComponent<BallScoreLogger>().p1p2 = 0; //log who hit the ball last for ownerless goal scoring
 
         //set rarity of the ball
         if (rarity == 0)
         {
+            //set common ball properties
             newBall.GetComponent<Renderer>().material = common;
+            newBall.transform.localScale = new Vector3(4, 4, 4);
+            newBall.GetComponent<Rigidbody>().mass = 0.5f;
             scoreValue = cPoint;
         }
         else if(rarity == 1)
         {
+            //set rare ball properties
             newBall.GetComponent<Renderer>().material = rare;
+            newBall.transform.localScale = new Vector3(3, 3, 3);
+            newBall.GetComponent<Rigidbody>().mass = 1;
             scoreValue = rPoint;
         }
         else if(rarity == 2)
         {
+            //set ultrarare ball properties
             newBall.GetComponent<Renderer>().material = ultra;
+            newBall.transform.localScale = new Vector3(2, 2, 2);
+            newBall.GetComponent<Rigidbody>().mass = 1.5f;
             scoreValue = uPoint;
         }
 
