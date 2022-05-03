@@ -9,6 +9,7 @@ public class SettingsController : MonoBehaviour
     //corner obstacles
     public bool cornerBumper; //set bumpers Y/N
     public float cornerStrength = 1; //set bumpers x1/x2/x3
+    int cornerCounter = 0; //counts button presses
     //buttons and sliders
     public Button cornerBumperBtn; //bumper toggle
     public Slider cornerBumperSldr; //bumper strength?
@@ -17,6 +18,7 @@ public class SettingsController : MonoBehaviour
     public bool midBumper; //set bumper Y/N
     public float midStrength = 1; //set bumper x1/x2/x3
     public bool midRamp; //set ramps Y/N
+    int midCounter = 0; //counts button presses
     //buttons and sliders
     public Button midBumperBtn; //bumper toggle
     public Slider midBumperSldr; //bumper strength?
@@ -27,6 +29,7 @@ public class SettingsController : MonoBehaviour
     public float goalStrength = 1; //set bumper x1/x2/x3
     public bool goalOwned = true; //set goal ownership Y/N
     public bool goalWarp; //set goal warp Y/N
+    int goalCounter = 0; //counts button presses
     //buttons and sliders
     public Button goalBumperBtn; //bumper toggle
     public Slider goalBumperSldr; //bumper strength
@@ -43,12 +46,16 @@ public class SettingsController : MonoBehaviour
     //Confirm Button
     public Button confirmBtn;
 
+    //team idntifiers
+    public GameObject teamBlue;
+    public GameObject teamRed;
+
     private void Start()
     {
         //corner bumpers?
         Button cbBtn = cornerBumperBtn.GetComponent<Button>();
         cbBtn.onClick.AddListener(CornerBumperToggle);
-        cornerBumperBtn.GetComponent<ButtonColourChanger>().toggled = cornerBumper;
+        cornerBumperBtn.GetComponent<ButtonColourChanger>().value = System.Convert.ToInt32(cornerBumper);
 
         //corner bumper strength?
         Slider cbSldr = cornerBumperSldr.GetComponent<Slider>();
@@ -57,7 +64,7 @@ public class SettingsController : MonoBehaviour
         //mid bumpers?
         Button mbBtn = midBumperBtn.GetComponent<Button>();
         mbBtn.onClick.AddListener(MidBumperToggle);
-        midBumperBtn.GetComponent<ButtonColourChanger>().toggled = midBumper;
+        midBumperBtn.GetComponent<ButtonColourChanger>().value = System.Convert.ToInt32(midBumper);
 
         //mid bumper strength?
         Slider mbSldr = midBumperSldr.GetComponent<Slider>();
@@ -66,12 +73,12 @@ public class SettingsController : MonoBehaviour
         //mid ramps?
         Button mrBtn = midRampbtn.GetComponent<Button>();
         mrBtn.onClick.AddListener(MidRampToggle);
-        midRampbtn.GetComponent<ButtonColourChanger>().toggled = midRamp;
+        midRampbtn.GetComponent<ButtonColourChangerOrigin>().toggled = midRamp;
 
         //Goal Bumper?
         Button gbBtn = goalBumperBtn.GetComponent<Button>();
         gbBtn.onClick.AddListener(GoalBumperToggle);
-        goalBumperBtn.GetComponent<ButtonColourChangerVariant>().toggled = goalBumper;
+        goalBumperBtn.GetComponent<ButtonColourChangerVariant>().value = System.Convert.ToInt32(goalBumper);
 
         //Goal bumper strength?
         Slider gbSldr = goalBumperSldr.GetComponent<Slider>();
@@ -80,12 +87,12 @@ public class SettingsController : MonoBehaviour
         //Goal owned?
         Button goBtn = goalOwnedBtn.GetComponent<Button>();
         goBtn.onClick.AddListener(GoalOwnerToggle);
-        goalOwnedBtn.GetComponent<ButtonColourChanger>().toggled = goalOwned;
+        goalOwnedBtn.GetComponent<ButtonColourChangerOrigin>().toggled = goalOwned;
 
         //Goal Warp?
         Button gwBtn = goalWarpBtn.GetComponent<Button>();
         gwBtn.onClick.AddListener(GoalWarpToggle);
-        goalWarpBtn.GetComponent<ButtonColourChangerVariant>().toggled = goalWarp;
+        goalWarpBtn.GetComponent<ButtonColourChangerVariant>().value = System.Convert.ToInt32(goalWarp);
 
         //Ball Rarity?
         Button brBtn = rarityBtn.GetComponent<Button>();
@@ -101,16 +108,18 @@ public class SettingsController : MonoBehaviour
 
     void CornerBumperToggle()
     {
-        cornerBumper = !cornerBumper;
-        if (cornerBumper == false)
+        if (cornerCounter < 3)
         {
-            cornerBumperSldr.value = 1;
-            cornerStrength = 1;
-            cornerBumperSldr.enabled = false;
+            cornerCounter++;
+            cornerBumper = true;
         }
         else
         {
-            cornerBumperSldr.enabled = true;
+            cornerCounter = 0;
+
+            cornerBumperSldr.value = 1;
+            cornerStrength = 1;
+            cornerBumper = false;
         }
     }
 
@@ -121,16 +130,18 @@ public class SettingsController : MonoBehaviour
 
     void MidBumperToggle()
     {
-        midBumper = !midBumper;
-        if (midBumper == false)
+        if (midCounter < 3)
         {
-            midBumperSldr.value = 1;
-            midStrength = 1;
-            midBumperSldr.enabled = false;
+            midCounter++;
+            midBumper = true;
         }
         else
         {
-            midBumperSldr.enabled = true;
+            midCounter = 0;
+
+            midBumperSldr.value = 1;
+            midStrength = 1;
+            midBumper = false;
         }
     }
 
@@ -146,20 +157,37 @@ public class SettingsController : MonoBehaviour
 
     void GoalBumperToggle()
     {
-        goalBumper = !goalBumper;
         goalWarp = false;
-        goalBumperBtn.GetComponent<ButtonColourChangerVariant>().toggled = goalBumper;
-        goalWarpBtn.GetComponent<ButtonColourChangerVariant>().toggled = goalWarp;
-
-        if (goalBumper == false)
+        if (goalCounter < 3)
         {
-            goalBumperSldr.value = 1;
-            goalStrength = 1;
-            goalBumperSldr.enabled = false;
+            goalCounter++;
+            goalBumper = true;
+            goalBumperSldr.value = goalCounter;
+
+            goalBumperBtn.GetComponent<ButtonColourChangerVariant>().value = goalCounter;
+            goalWarpBtn.GetComponent<ButtonColourChangerVariant>().value = 0;
+
+            if (goalCounter == 1)
+            {
+                goalBumperBtn.GetComponentInChildren<Text>().text = "Bumpers\n(Power x1)";
+            }
+            else if (goalCounter == 2)
+            {
+                goalBumperBtn.GetComponentInChildren<Text>().text = "Bumpers\n(Power x2)";
+            }
+            else
+            {
+                goalBumperBtn.GetComponentInChildren<Text>().text = "Bumpers\n(Power x3)";
+            }
         }
         else
         {
-            goalBumperSldr.enabled = true;
+            goalCounter = 0;
+            goalBumperBtn.GetComponentInChildren<Text>().text = "Bumpers\n(Off)";
+            goalBumperSldr.value = 1;
+            goalStrength = 1;
+            goalBumper = false;
+            goalBumperBtn.GetComponent<ButtonColourChangerVariant>().value = 0;
         }
     }
 
@@ -171,14 +199,19 @@ public class SettingsController : MonoBehaviour
     void GoalOwnerToggle()
     {
         goalOwned = !goalOwned;
+        teamBlue.GetComponent<TeamIdentifier>().toggled = goalOwned;
+        teamRed.GetComponent<TeamIdentifier>().toggled = goalOwned;
     }
 
     void GoalWarpToggle()
     {
         goalWarp = !goalWarp;
         goalBumper = false;
-        goalWarpBtn.GetComponent<ButtonColourChangerVariant>().toggled = goalWarp;
-        goalBumperBtn.GetComponent<ButtonColourChangerVariant>().toggled = goalBumper;
+        goalBumperBtn.GetComponentInChildren<Text>().text = "Bumpers\n(Off)";
+        goalCounter = 0;
+
+        goalWarpBtn.GetComponent<ButtonColourChangerVariant>().value = goalWarp ? 1 : 0;
+        goalBumperBtn.GetComponent<ButtonColourChangerVariant>().value = 0;
 
         if (goalBumper == false)
         {

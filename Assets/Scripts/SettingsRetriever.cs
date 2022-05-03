@@ -45,7 +45,7 @@ public class SettingsRetriever : MonoBehaviour
             mb = PlayerPrefs.GetInt("mb") == 1 ? true : false; //
             mr = PlayerPrefs.GetInt("mr") == 1 ? true : false; //
             gb = PlayerPrefs.GetInt("gb") == 1 ? true : false; //
-            go = PlayerPrefs.GetInt("go") == 1 ? true : false;
+            go = PlayerPrefs.GetInt("go") == 1 ? true : false; //
             gw = PlayerPrefs.GetInt("gw") == 1 ? true : false; //
 
             cbs = PlayerPrefs.GetInt("cbs"); //
@@ -192,6 +192,8 @@ public class SettingsRetriever : MonoBehaviour
             //set goal bumpers as active
             bumpers[4].SetActive(true);
             bumpers[5].SetActive(true);
+            bumpers[8].SetActive(false); //bumpers 8 and 9 are actually collision objects that need to be disabled
+            bumpers[9].SetActive(false);
 
             //set goal bumper strengths (not for balls they cant collide with these)
             bumpers[4].GetComponent<Bumper>().bounceForceCar *= gbs;

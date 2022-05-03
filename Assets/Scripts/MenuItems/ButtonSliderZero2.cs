@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BumperSliderZero : MonoBehaviour
+public class ButtonSliderZero2 : MonoBehaviour
 {
     public Button bumperBtn; //the bumper button
     public Image image; //this image
@@ -12,7 +12,7 @@ public class BumperSliderZero : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (bumperBtn.GetComponent<ButtonColourChanger>().value > 0)
+        if (bumperBtn.GetComponent<ButtonColourChangerOrigin>().toggled)
         {
             IsActive = true;
         }

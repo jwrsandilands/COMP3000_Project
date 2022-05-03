@@ -5,25 +5,12 @@ using UnityEngine.UI;
 
 public class ButtonColourChangerVariant : MonoBehaviour
 {
-    public bool toggled = false; //toggled?
+    public int value = 0; //toggled?
     public Button Btn; //button to toggle colour of
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Button button = Btn.GetComponent<Button>();
-        button.onClick.AddListener(Toggle);
-    }
-
-    void Toggle()
-    {
-
-    }
 
     private void Update()
     {
-        if (toggled)
+        if (value > 0)
         {
             ColorBlock colorer = Btn.colors;
             colorer.normalColor = new Color32(255, 255, 255, 255);

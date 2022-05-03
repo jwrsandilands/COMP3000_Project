@@ -12,7 +12,11 @@ public class BumperSliderZeroVariant : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        IsActive = bumperBtn.GetComponent<ButtonColourChangerVariant>().toggled;
+        if (bumperBtn.GetComponent<ButtonColourChangerVariant>().value > 0)
+        {
+            IsActive = true;
+        }
+        else IsActive = false;
     }
 
     //only do this when Active is toggled

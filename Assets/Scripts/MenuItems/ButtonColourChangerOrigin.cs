@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonColourChanger : MonoBehaviour
+public class ButtonColourChangerOrigin : MonoBehaviour
 {
-    public int value = 0; //toggled?
+    public bool toggled = false; //toggled?
     public Button Btn; //button to toggle colour of
-    public Slider BumperSlider;
 
 
     // Start is called before the first frame update
@@ -19,36 +18,12 @@ public class ButtonColourChanger : MonoBehaviour
 
     void Toggle()
     {
-        if (value < 3)
-        {
-            value++;
-            if (value == 1)
-            {
-                Btn.GetComponentInChildren<Text>().text = "Bumpers\n(Power x1)";
-                BumperSlider.value = 1;
-            }
-            else if (value == 2)
-            {
-                Btn.GetComponentInChildren<Text>().text = "Bumpers\n(Power x2)";
-                BumperSlider.value = 2;
-            }
-            else
-            {
-                Btn.GetComponentInChildren<Text>().text = "Bumpers\n(Power x3)";
-                BumperSlider.value = 3;
-            }
-        }
-        else
-        {
-            value = 0;
-            Btn.GetComponentInChildren<Text>().text = "Bumpers\n(Off)";
-            BumperSlider.value = 1;
-        }
+        toggled = !toggled;
     }
 
     private void Update()
     {
-        if (value > 0)
+        if (toggled)
         {
             ColorBlock colorer = Btn.colors;
             colorer.normalColor = new Color32(255, 255, 255, 255);
