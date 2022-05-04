@@ -13,7 +13,8 @@ public class GoalScript : MonoBehaviour
 
     public int scoreAwarded = 100; //amount of score this goal awards
 
-    public GameObject scoreCounter; //P1 or P2 scoring?
+    public GameObject scoreCounterL; //P1 or P2 scoring?
+    public GameObject scoreCounterR;
 
     //when something enters the trigger
     private void OnTriggerEnter(Collider other)
@@ -32,22 +33,26 @@ public class GoalScript : MonoBehaviour
                 Debug.Log("Ball Entered P1 goal!"); //notify for tests
 
                 //award points
-                scoreCounter.GetComponent<Scorer>().scoreP2 += scoreAwarded;
+                scoreCounterL.GetComponent<FinalScorer>().scoreP2 += scoreAwarded;
+                scoreCounterR.GetComponent<FinalScorer>().scoreP2 += scoreAwarded;
             }
             else if (!p1goal && p2goal)
             {
                 Debug.Log("Ball Entered P2 goal!"); //notify for tests
 
                 //award points
-                scoreCounter.GetComponent<Scorer>().scoreP1 += scoreAwarded;
+                scoreCounterL.GetComponent<FinalScorer>().scoreP1 += scoreAwarded;
+                scoreCounterR.GetComponent<FinalScorer>().scoreP1 += scoreAwarded;
             }
             else if (p1goal && p2goal)
             {
                 Debug.Log("Ball Entered a Shared goal!"); //notify for tests
 
                 //award points
-                scoreCounter.GetComponent<Scorer>().scoreP2 += scoreAwarded;
-                scoreCounter.GetComponent<Scorer>().scoreP1 += scoreAwarded;
+                scoreCounterL.GetComponent<FinalScorer>().scoreP2 += scoreAwarded;
+                scoreCounterL.GetComponent<FinalScorer>().scoreP1 += scoreAwarded;
+                scoreCounterR.GetComponent<FinalScorer>().scoreP2 += scoreAwarded;
+                scoreCounterR.GetComponent<FinalScorer>().scoreP1 += scoreAwarded;
             }
             else
             {

@@ -10,7 +10,8 @@ public class NoOwnerGoal : MonoBehaviour
 
     public int scoreAwarded; //amount of score this goal awards
 
-    public GameObject scoreCounter; //P1 or P2 scoring?
+    public GameObject scoreCounterL; //P1 or P2 scoring?
+    public GameObject scoreCounterR;
 
     //when something enters the trigger
     private void OnTriggerEnter(Collider other)
@@ -29,14 +30,16 @@ public class NoOwnerGoal : MonoBehaviour
                 Debug.Log("Player 1 Scored!"); //notify for tests
 
                 //award points
-                scoreCounter.GetComponent<Scorer>().scoreP1 += scoreAwarded;
+                scoreCounterL.GetComponent<FinalScorer>().scoreP1 += scoreAwarded;
+                scoreCounterR.GetComponent<FinalScorer>().scoreP1 += scoreAwarded;
             }
             else if (other.GetComponent<BallScoreLogger>().p1p2 == 2)
             {
                 Debug.Log("Player 2 Scored!"); //notify for tests
 
                 //award points
-                scoreCounter.GetComponent<Scorer>().scoreP2 += scoreAwarded;
+                scoreCounterL.GetComponent<FinalScorer>().scoreP2 += scoreAwarded;
+                scoreCounterR.GetComponent<FinalScorer>().scoreP2 += scoreAwarded;
             }
             else
             {
