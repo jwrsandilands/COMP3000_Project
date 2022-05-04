@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class SettingsController : MonoBehaviour
 {
@@ -49,6 +50,12 @@ public class SettingsController : MonoBehaviour
     //team idntifiers
     public GameObject teamBlue;
     public GameObject teamRed;
+
+    //controllers connected?
+    bool p1, p2; //players in?
+    public Gamepad player1, player2; //player Controllers
+    public GameObject lrBlue;
+    public GameObject lrRed;
 
     private void Start()
     {
@@ -241,7 +248,29 @@ public class SettingsController : MonoBehaviour
     {
         ballNumber = bnSldr.value;
     }
-    
+
+    private void Update()
+    {
+        if (player1 == null && Gamepad.current.leftShoulder.ReadValue() == 1 && Gamepad.current.rightShoulder.ReadValue() == 1)
+        {
+            player1 = Gamepad.current;
+            p1 = true;
+            lrBlue.GetComponent<LRPressAnimation>().controllerAccepted = true;
+        }
+        else if (player2 == null && Gamepad.current != player1 && Gamepad.current.leftShoulder.ReadValue() == 1 && Gamepad.current.rightShoulder.ReadValue() == 1)
+        {
+            player2 = Gamepad.current;
+            p2 = true;
+            lrRed.GetComponent<LRPressAnimation>().controllerAccepted = true;
+        }
+
+        if (p1 && p2)
+        {
+            confirmBtn.GetComponent<Button>().enabled = true;
+            confirmBtn.GetComponent<ButtonColourChangerVariant>().value = 1;
+        }
+    }
+
     void ConfirmChoices()
     {
         //save all preferences
@@ -279,6 +308,6 @@ public class SettingsController : MonoBehaviour
 
         Debug.Log("----Moving Scene!----");
 
-        SceneManager.LoadScene("TestScene");
+        SceneManager.LoadScene("GameArena");
     }
 }
