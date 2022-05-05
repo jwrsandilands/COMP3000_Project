@@ -1500,7 +1500,7 @@ GameObject:
   - component: {fileID: 277488836}
   m_Layer: 0
   m_Name: ControllerSystem
-  m_TagString: Untagged
+  m_TagString: ControllerSystem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

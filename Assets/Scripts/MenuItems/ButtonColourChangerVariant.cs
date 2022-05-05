@@ -10,6 +10,7 @@ public class ButtonColourChangerVariant : MonoBehaviour
 
     private void Update()
     {
+        //change colour when toggled
         if (value > 0)
         {
             ColorBlock colorer = Btn.colors;

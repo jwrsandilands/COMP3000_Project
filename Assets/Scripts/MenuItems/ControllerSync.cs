@@ -23,6 +23,7 @@ public class ControllerSync : MonoBehaviour
 
     private void Update()
     {
+        //set controllers
         if (player1 == null && Gamepad.current.leftShoulder.ReadValue() == 1 && Gamepad.current.rightShoulder.ReadValue() == 1)
         {
             player1 = Gamepad.current;
@@ -36,8 +37,9 @@ public class ControllerSync : MonoBehaviour
 
         if(SceneManager.GetActiveScene().name != "GameMenu" && !playersSpawned)
         {
-            playersSpawned = true;
+            playersSpawned = true; //lock this if
 
+            //instantiate player objects
             blueCar = Instantiate(car);
             blueCar.transform.GetChild(1).GetComponent<Renderer>().material = blueSkin;
             blueCar.transform.position = spawnCoordsBlue;
@@ -52,5 +54,7 @@ public class ControllerSync : MonoBehaviour
             redCar.GetComponent<CarController>().player = player2;
             redCar.GetComponent<CarController>().playerNumber = 2;
         }
+
+
     }
 }
