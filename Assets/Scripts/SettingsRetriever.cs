@@ -10,6 +10,8 @@ public class SettingsRetriever : MonoBehaviour
     public GameObject[] bumpers;
     public GameObject[] ramps;
     public GameObject[] goals;
+    public GameObject arenaFrame;
+    public Material goalOwned;
 
     int n;
     int cCounter, commonsExists;
@@ -235,6 +237,8 @@ public class SettingsRetriever : MonoBehaviour
 
             goals[2].SetActive(false);
             goals[3].SetActive(false);
+
+            arenaFrame.GetComponent<Renderer>().material = goalOwned;
         }
         else
         {

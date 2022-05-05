@@ -136,7 +136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5890108008079007811, guid: 138f0256bbb9dfd4ba80ab7ae64c50f8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5890108008079007813, guid: 138f0256bbb9dfd4ba80ab7ae64c50f8, type: 3}
       propertyPath: m_RootOrder
@@ -4116,7 +4116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b679423145fd9344a4e8e78f971d9a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 2
+  time: 180
   minutes: 0
   seconds: 0
   timeL: {fileID: 230183631}
@@ -4539,6 +4539,8 @@ MonoBehaviour:
   - {fileID: 1897835757}
   - {fileID: 439314048}
   - {fileID: 1712971945}
+  arenaFrame: {fileID: 1792235360}
+  goalOwned: {fileID: 2100000, guid: fc85c9f40c802d545a096f28177c86e8, type: 2}
 --- !u!4 &1369793056
 Transform:
   m_ObjectHideFlags: 0
@@ -5940,6 +5942,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 386ecffdd73713942b5c52298f1504dd, type: 3}
+--- !u!1 &1792235360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8164078558771037576, guid: 386ecffdd73713942b5c52298f1504dd, type: 3}
+  m_PrefabInstance: {fileID: 1792235359}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1827627296
 GameObject:
   m_ObjectHideFlags: 0
@@ -7353,7 +7360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5890108008079007811, guid: 138f0256bbb9dfd4ba80ab7ae64c50f8, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5890108008079007813, guid: 138f0256bbb9dfd4ba80ab7ae64c50f8, type: 3}
       propertyPath: m_RootOrder
