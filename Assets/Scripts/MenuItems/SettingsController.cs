@@ -251,24 +251,32 @@ public class SettingsController : MonoBehaviour
 
     private void Update()
     {
-        if (player1 == null && Gamepad.current.leftShoulder.ReadValue() == 1 && Gamepad.current.rightShoulder.ReadValue() == 1)
+        try
         {
-            player1 = Gamepad.current;
-            p1 = true;
-            lrBlue.GetComponent<LRPressAnimation>().controllerAccepted = true;
+            if (player1 == null && Gamepad.current.leftShoulder.ReadValue() == 1 && Gamepad.current.rightShoulder.ReadValue() == 1)
+            {
+                player1 = Gamepad.current;
+                p1 = true;
+                lrBlue.GetComponent<LRPressAnimation>().controllerAccepted = true;
+            }
+            else if (player2 == null && Gamepad.current != player1 && Gamepad.current.leftShoulder.ReadValue() == 1 && Gamepad.current.rightShoulder.ReadValue() == 1)
+            {
+                player2 = Gamepad.current;
+                p2 = true;
+                lrRed.GetComponent<LRPressAnimation>().controllerAccepted = true;
+            }
+
+            if (p1 && p2)
+            {
+                confirmBtn.GetComponent<Button>().enabled = true;
+                confirmBtn.GetComponent<ButtonColourChangerVariant>().value = 1;
+            }
         }
-        else if (player2 == null && Gamepad.current != player1 && Gamepad.current.leftShoulder.ReadValue() == 1 && Gamepad.current.rightShoulder.ReadValue() == 1)
+        catch
         {
-            player2 = Gamepad.current;
-            p2 = true;
-            lrRed.GetComponent<LRPressAnimation>().controllerAccepted = true;
+
         }
 
-        if (p1 && p2)
-        {
-            confirmBtn.GetComponent<Button>().enabled = true;
-            confirmBtn.GetComponent<ButtonColourChangerVariant>().value = 1;
-        }
     }
 
     void ConfirmChoices()

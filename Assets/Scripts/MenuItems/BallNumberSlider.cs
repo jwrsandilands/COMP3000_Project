@@ -17,6 +17,6 @@ public class BallNumberSlider : MonoBehaviour
 
     void SliderValueChange()
     {
-        text.text = "Number of Balls\n(" + thisSlider.value + ")";
+        text.text = "Number of Balls (" + thisSlider.value + ")";
     }
 }

@@ -23,17 +23,25 @@ public class ControllerSync : MonoBehaviour
 
     private void Update()
     {
-        //set controllers
-        if (player1 == null && Gamepad.current.leftShoulder.ReadValue() == 1 && Gamepad.current.rightShoulder.ReadValue() == 1)
+        try
         {
-            player1 = Gamepad.current;
-            p1 = true;
+            //set controllers
+            if (player1 == null && Gamepad.current.leftShoulder.ReadValue() == 1 && Gamepad.current.rightShoulder.ReadValue() == 1)
+            {
+                player1 = Gamepad.current;
+                p1 = true;
+            }
+            else if (player2 == null && Gamepad.current != player1 && Gamepad.current.leftShoulder.ReadValue() == 1 && Gamepad.current.rightShoulder.ReadValue() == 1)
+            {
+                player2 = Gamepad.current;
+                p2 = true;
+            }
         }
-        else if (player2 == null && Gamepad.current != player1 && Gamepad.current.leftShoulder.ReadValue() == 1 && Gamepad.current.rightShoulder.ReadValue() == 1)
+        catch
         {
-            player2 = Gamepad.current;
-            p2 = true;
+
         }
+
 
         if(SceneManager.GetActiveScene().name != "GameMenu" && !playersSpawned)
         {
